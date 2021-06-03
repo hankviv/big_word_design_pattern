@@ -1,11 +1,24 @@
 <?php
 
-class OperationSub extends Operation
+class OperationFactory
 {
-
-    public function getResult()
+    public static function createOperation(string $operate)
     {
-        return $this->getNumberA() - $this->getNumberB();
+        $operation = '';
+        switch($operate){
+            case '+':
+                $operation = new OperationAdd();
+                break;
+            case '-':
+                $operation = new OperationSub();
+                break;
+            case '*':
+                $operation = new OperationMul();
+                break;
+            case '/':
+                $operation = new OperationDiv();
+                break;
+        }
+        return $operation;
     }
-
 }
