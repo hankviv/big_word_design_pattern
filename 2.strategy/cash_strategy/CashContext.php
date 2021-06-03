@@ -1,21 +1,28 @@
 <?php
 
-class CashFactory
+class CashContext
 {
-    public static function createCashAccept(string $type)
+    private $cs;
+
+    public function __construct(string $type)
     {
-        $cash = null;
-        switch($type){
+        switch ($type) {
             case '原价':
-                $cash = new CashNormal;
+                $this->cs = new CashNormal();
                 break;
             case '八折':
-                $cash = new CashRebate(0.8);
+                $this->cs = new CashRebate(0.8);
                 break;
             case '满500减200':
-                $cash = new CashSub(500,200);
+                $this->cs = new CashSub(500, 200);
                 break;
         }
-        return $cash;
     }
+
+    //委托Cash的子类去实现acceptCash
+    public function getResult($money)
+    {
+        return $this->cs->acceptCash($money);
+    }
+
 }

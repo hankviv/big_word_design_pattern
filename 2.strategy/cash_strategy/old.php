@@ -1,6 +1,8 @@
 <?php
 
-
+/*
+ * 促销活动 输入 活动类型，单价， 数量  输出价格
+ */
 function compute($discount, $price, $number)
 {
     $totalPrice = $price * $number;

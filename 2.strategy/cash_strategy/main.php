@@ -6,8 +6,7 @@ $number = $argv[3] ?? 2;
 
 $totalPrice = $price * $number;
 
-//通过工厂模式 获取对象, 传递不同的折扣类型 获取不同的折扣方法
-$cash = CashFactory::createCashAccept($cashType);
+//我们使用CashContext将Cash所有的算法封闭起来，让用户只需要关注CashContext。
+$cc = new CashContext($cashType);
 
-//调用子类实现的方法
-$totalPrice = $cash->acceptCash($totalPrice);
+$price = $cc->getResult($totalPrice);
