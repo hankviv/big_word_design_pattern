@@ -2,10 +2,8 @@
 
 class OperationAdd extends Operation
 {
-
-    public function getResult()
+    public function getResult($numberA,$numberB)
     {
-        return $this->getNumberA() + $this->getNumberB();
+        return $numberA + $numberB;
     }
-
 }

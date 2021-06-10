@@ -22,7 +22,5 @@ if($operation == '+'){
 }
 $operation = $factory->createOperation();
 
-$operation->setNumberA($numberA);
-$operation->setNumberB($numberB);
 //调用子类重写的对象
-$result = $operation->getResult();
+$result = $operation->getResult($numberA,$numberB);
